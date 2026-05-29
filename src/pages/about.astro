@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="About"
+  description="About Ly Ngoc Dang Khoa — Backend Developer based in Ho Chi Minh City."
+>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-ink mb-6">About</h1>
+
+    <p class="text-ink leading-relaxed mb-14 max-w-2xl">
+      Software Engineer with hands-on experience developing backend systems using modern
+      frameworks. Strong foundation in backend development, system design, and database
+      optimization, with a focus on building reliable and maintainable applications.
+    </p>
+
+    <!-- Experience -->
+    <section class="mb-14">
+      <h2 class="text-xs font-mono text-dim uppercase tracking-widest mb-8">Experience</h2>
+      <div class="space-y-10">
+
+        <div>
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+            <h3 class="text-ink font-semibold">TPS Software Solution</h3>
+            <span class="text-dim text-sm font-mono">Mar 2025 – Present</span>
+          </div>
+          <p class="text-dim text-sm mb-3">Backend Developer</p>
+          <ul class="space-y-1.5 text-sm text-ink list-disc pl-4 marker:text-dim">
+            <li>Developed backend services for financial systems using Java and Spring Boot in a microservices architecture.</li>
+            <li>Refactored business logic and optimized SQL queries, reducing page load time from 10–15s to 5–8s per 100 records (up to 50% improvement).</li>
+            <li>Built real-time dashboard streaming using WebSocket and database functions.</li>
+            <li>Contributed to multi-department budget approval workflows.</li>
+            <li>Maintained over 80% code coverage with JUnit and Mockito.</li>
+          </ul>
+          <p class="text-xs font-mono text-dim mt-4">
+            Java · Spring Boot · PostgreSQL · Microservices · Liquibase · WebSocket · AWS S3
+          </p>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap justify-between items-start gap-2 mb-1">
+            <h3 class="text-ink font-semibold">FPT Software</h3>
+            <span class="text-dim text-sm font-mono">Sep 2023 – Dec 2023</span>
+          </div>
+          <p class="text-dim text-sm mb-3">Intern Backend Developer</p>
+          <ul class="space-y-1.5 text-sm text-ink list-disc pl-4 marker:text-dim">
+            <li>Developed and improved programming modules using Java and Spring Boot.</li>
+            <li>Implemented unit tests to ensure code quality and reliability.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="mb-14">
+      <h2 class="text-xs font-mono text-dim uppercase tracking-widest mb-8">Skills</h2>
+      <div class="space-y-4 text-sm">
+        {[
+          { label: 'Backend', value: 'Java · Spring Boot · Spring Security · RESTful API · Microservices · JPA/Hibernate · WebSocket · JWT' },
+          { label: 'Databases', value: 'PostgreSQL · MySQL · Redis' },
+          { label: 'Testing', value: 'JUnit · Mockito' },
+          { label: 'Tools', value: 'Git · GitLab · Docker · IntelliJ IDEA · Postman · DBeaver · Jira' },
+        ].map(({ label, value }) => (
+          <div class="flex gap-6">
+            <span class="text-dim w-24 shrink-0">{label}</span>
+            <span class="text-ink font-mono text-xs leading-relaxed">{value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="mb-14">
+      <h2 class="text-xs font-mono text-dim uppercase tracking-widest mb-8">Education</h2>
+      <div class="flex flex-wrap justify-between items-start gap-2">
+        <div>
+          <h3 class="text-ink font-semibold">FPT University HCM</h3>
+          <p class="text-dim text-sm">Bachelor of Software Engineering · GPA 8.4/10</p>
+        </div>
+        <span class="text-dim text-sm font-mono">Jan 2022 – Jan 2025</span>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section>
+      <h2 class="text-xs font-mono text-dim uppercase tracking-widest mb-8">Certifications</h2>
+      <ul class="space-y-2 text-sm">
+        <li class="flex gap-4">
+          <span class="text-dim w-16 shrink-0">TOEIC</span>
+          <span class="text-ink">845/990 (2025)</span>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-dim w-16 shrink-0">JLPT</span>
+          <span class="text-ink">N3 (2025) · N4 (2024)</span>
+        </li>
+        <li class="flex gap-4">
+          <span class="text-dim w-16 shrink-0">IELTS</span>
+          <span class="text-ink">6.0 (2020)</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

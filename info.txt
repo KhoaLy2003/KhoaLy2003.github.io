@@ -1,0 +1,167 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\definecolor{primary}{RGB}{0, 0, 0}
+\definecolor{secondary}{RGB}{80, 80, 80}
+\definecolor{linkcolor}{RGB}{0, 0, 238}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkcolor,
+}
+
+% Command for underlined links
+\newcommand{\ulhref}[2]{\href{#1}{\underline{#2}}}
+
+% Page style
+\pagestyle{empty}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\uppercase}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{5pt}
+
+% Itemize formatting
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=15pt}
+
+\setlength{\parindent}{0pt}
+\begin{document}
+
+% \begin{center}
+%     {\huge \bfseries LY NGOC DANG KHOA} \\
+%     \vspace{2pt}
+%     {\large \color{secondary} BACKEND DEVELOPER} \\
+%     \vspace{8pt}
+%     \small
+%     Phone: 0359.958.751 \quad | \quad Email: \href{mailto:khoaly090141@gmail.com}{khoaly090141@gmail.com} \quad | \quad Address: Ho Chi Minh City \\
+%     \vspace{2pt}
+%     LinkedIn: \href{https://www.linkedin.com/in/khoaly2003}{linkedin.com/in/khoaly2003} \quad | \quad
+%     Portfolio: \href{https://khoaly2003.github.io}{khoaly2003.github.io} \quad | \quad
+%     GitHub: \href{https://github.com/KhoaLy2003}{github.com/KhoaLy2003}
+% \end{center}
+% \begin{center}
+%     {\huge \bfseries LY NGOC DANG KHOA} \\
+%     \vspace{2pt}
+%     {\large \color{secondary} BACKEND DEVELOPER} \\
+%     \vspace{8pt}
+%     \small
+
+%     \begin{tabular}{l@{\hspace{1cm}}l@{\hspace{1cm}}l}
+%         Phone: 0359.958.751                                                                 &
+%         Email: \href{mailto:khoaly090141@gmail.com}{khoaly090141@gmail.com}                 &
+%         Address: Ho Chi Minh City                                                             \\
+
+%         LinkedIn: \href{https://www.linkedin.com/in/khoaly2003}{linkedin.com/in/khoaly2003} &
+%         Portfolio: \href{https://khoaly2003.github.io}{khoaly2003.github.io}                &
+%         GitHub: \href{https://github.com/KhoaLy2003}{github.com/KhoaLy2003}
+%     \end{tabular}
+
+% \end{center}
+
+\begin{center}
+    {\huge \bfseries LY NGOC DANG KHOA} \\
+    \vspace{2pt}
+    {\large \color{secondary} BACKEND DEVELOPER} \\
+    \vspace{8pt}
+    \small
+
+    \begin{tabular}{l@{\hspace{1cm}}l@{\hspace{1cm}}l}
+        Date of Birth: 10/04/2003                                                           &
+        Email: \href{mailto:khoaly090141@gmail.com}{khoaly090141@gmail.com}                 &
+        Phone: 0359.958.751                                                                   \\
+
+        Address: Ho Chi Minh City                                                           &
+        LinkedIn: \href{https://www.linkedin.com/in/khoaly2003}{linkedin.com/in/khoaly2003} &
+        GitHub: \href{https://github.com/KhoaLy2003}{github.com/KhoaLy2003}
+    \end{tabular}
+
+\end{center}
+
+\vspace{-10pt}
+
+\section{Summary}
+Software Engineer with hands-on experience developing backend systems using modern frameworks. Strong foundation in backend development, system design, and database optimization, with a focus on building reliable and maintainable applications.
+
+% Skills
+% \section{Skills}
+% \begin{itemize}
+%     \item \textbf{Backend:} Java, Spring Boot, Spring Security, RESTful API, Microservices, JPA/Hibernate, WebSocket, JWT
+%     \item \textbf{Databases:} PostgreSQL, MySQL, Redis
+%     \item \textbf{Testing:} JUnit, Mockito, Unit Testing
+%     \item \textbf{Tools \& Others:} Git, GitLab, IntelliJ IDEA, Postman, DBeaver, Docker, Jira
+% \end{itemize}
+\section{Technical Skills}
+\textbf{Backend Development:} Java, Spring Boot, Spring Security, RESTful API, Microservices, JPA/Hibernate, WebSocket, JWT \\
+\textbf{Databases:} PostgreSQL, MySQL, Redis \\
+\textbf{Testing:} JUnit, Mockito \\
+\textbf{Tools \& Others:} Git, GitLab, Docker, IntelliJ IDEA, Postman, DBeaver, Jira
+
+% Experience
+\section{Experience}
+\textbf{TPS Software Solution} \hfill Mar 2025 -- Present \\
+\textbf{Backend Developer}
+\begin{itemize}
+    \item Developed and maintained backend services for financial systems using Java and Spring Boot within a microservices architecture.
+    \item Delivered a Project Management feature that consolidated financial transaction and payment data by project, enhancing financial visibility and reporting accuracy.
+    \item Developed real-time dashboard integration using WebSocket and database functions to stream financial updates.
+    \item Refactored complex business logic and optimized SQL queries for financial transaction modules, reducing average page load time from \textbf{10--15s to 5--8s per 100 records} (up to 50\% performance improvement).
+    \item Contributed to the implementation of multi-department approval workflows for budget planning and expense management.
+    \item Separated socket handling and scheduling logic into a standalone microservice, improving scalability and reducing service coupling.
+    \item Developed the registration application management system and daily batch jobs to automate enterprise account validation and provisioning.
+    \item Developed and maintained unit tests using JUnit and Mockito, achieving \textbf{over 80\% code coverage} across the codebase.
+    \item Collaborated in Agile/Scrum processes, participating in sprint planning, daily standups, and retrospectives.
+    \item Utilized AI-assisted development tools to improve development productivity and problem-solving efficiency.
+    \item Tech: Java, Spring Boot, PostgreSQL, Microservices, Liquibase, WebSocket, AWS (S3).
+\end{itemize}
+
+\bigskip
+
+\textbf{FPT Software} \hfill Sep 2023 -- Dec 2023 \\
+\textbf{Internship Program} | \textit{Intern Backend Developer}
+\begin{itemize}
+    \item Developed and improved programming modules using Java and Spring Boot.
+    \item Implemented unit tests to ensure code quality and reliability.
+\end{itemize}
+
+% Project
+\section{Project}
+\textbf{Otaku Community Platform} | \textit{Personal Project} \hfill Dec 2024 -- Present
+% \begin{itemize}
+%     \item Designed and developed a full-stack community platform connecting anime/manga fans, translators, and content creators.
+%     \item Structured the system into independent feature modules (e.g., User, Post, Integration, Comment, Notification) where each feature encapsulates its own controller, service, repository, and domain logic.
+%     \item Built a news feed system using cursor-based pagination for smooth infinite scrolling.
+%     \item Engineered an asynchronous batch processing system for media uploads to provide users with real-time job tracking and automated progress notifications.
+%     \item Tech: Java, Spring Boot, Spring Security, Auth0, PostgreSQL, Redis, WebSocket, Liquibase, React, TypeScript.
+%     \item Live Demo: \href{https://otaku-community.vercel.app/}{otaku-community.vercel.app}
+%     \item Source Code: \href{https://github.com/KhoaLy2003/otaku-community}{github.com/KhoaLy2003/otaku-community}
+% \end{itemize}
+\begin{itemize}
+    \item Designed and developed a full-stack community platform connecting anime/manga fans, translators, and content creators.
+    \item Structured the system into independent feature modules (e.g., User, Post, Integration, Comment, Notification) where each feature encapsulates its own controller, service, repository, and domain logic.
+    \item Developed a news feed system with cursor-based pagination for smooth infinite scrolling and utilized asynchronous "Fan-out on Write" to handle post distribution efficiently.
+    \item Engineered an asynchronous batch processing system for media uploads to provide users with real-time job tracking and automated progress notifications.
+    \item Tech: Java, Spring Boot, Spring Security, Auth0, PostgreSQL, Redis, WebSocket, Liquibase, React, TypeScript.
+    \item Live Demo: \href{https://otaku-community.vercel.app/}{otaku-community.vercel.app}
+    \item Source Code: \href{https://github.com/KhoaLy2003/otaku-community}{github.com/KhoaLy2003/otaku-community}
+\end{itemize}
+
+% Education
+\section{Education}
+\textbf{FPT University HCM:} Bachelor of Software Engineering -- GPA: 8.4/10 \hfill Jan 2022 -- Jan 2025
+
+% Certifications
+\section{Certifications}
+\begin{itemize}
+    \item \textbf{TOEIC:} Reading and Listening: 845/990 (2025)
+    \item \textbf{JLPT:} N3 (2025), N4 (2024)
+    \item \textbf{IELTS:} 6.0 (2020)
+\end{itemize}
+
+\end{document}

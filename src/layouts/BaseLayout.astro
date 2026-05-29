@@ -1,0 +1,124 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Ly Ngoc Dang Khoa — Backend Developer based in Ho Chi Minh City.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title === 'Home' ? 'Khoa Ly' : `${title} — Khoa Ly`}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const systemLight = !window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'light' || (!stored && systemLight)) {
+        document.documentElement.classList.add('light');
+      }
+    </script>
+    <style is:global>
+      :root {
+        --color-canvas: #0d1117;
+        --color-surface: #161b22;
+        --color-edge: #30363d;
+        --color-ink: #e6edf3;
+        --color-dim: #8b949e;
+        --color-accent: #58a6ff;
+      }
+      :root.light {
+        --color-canvas: #ffffff;
+        --color-surface: #f6f8fa;
+        --color-edge: #d0d7de;
+        --color-ink: #1f2328;
+        --color-dim: #656d76;
+        --color-accent: #0969da;
+      }
+      html {
+        font-size: 18px;
+      }
+      body {
+        background-color: var(--color-canvas);
+        color: var(--color-ink);
+      }
+      /* Theme toggle icons */
+      .theme-icon-sun { display: block; }
+      .theme-icon-moon { display: none; }
+      html.light .theme-icon-sun { display: none; }
+      html.light .theme-icon-moon { display: block; }
+      /* Copy code button */
+      .copy-btn {
+        position: absolute; top: 10px; right: 10px;
+        padding: 3px 10px; font-size: 11px; font-family: ui-monospace, monospace;
+        background: var(--color-surface); color: var(--color-dim);
+        border: 1px solid var(--color-edge); border-radius: 6px;
+        cursor: pointer; transition: color 0.15s, border-color 0.15s;
+      }
+      .copy-btn:hover { border-color: var(--color-accent); }
+      .copy-btn.copied { color: var(--color-accent); border-color: var(--color-accent); }
+      /* Blog post prose styles */
+      .prose { line-height: 1.8; }
+      .prose h2 { font-size: 1.5rem; font-weight: 700; color: var(--color-ink); margin: 2.5rem 0 1rem; }
+      .prose h3 { font-size: 1.25rem; font-weight: 600; color: var(--color-ink); margin: 2rem 0 0.75rem; }
+      .prose p { margin-bottom: 1.25rem; color: var(--color-ink); }
+      .prose a { color: var(--color-accent); text-decoration: underline; }
+      .prose ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+      .prose ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+      .prose li { margin-bottom: 0.25rem; color: var(--color-ink); }
+      .prose strong { font-weight: 600; color: var(--color-ink); }
+      .prose hr { border-color: var(--color-edge); margin: 2rem 0; }
+      .prose blockquote {
+        border-left: 2px solid var(--color-edge);
+        padding-left: 1rem;
+        color: var(--color-dim);
+        font-style: italic;
+        margin: 1.5rem 0;
+      }
+      .prose code:not(pre code) {
+        font-family: ui-monospace, monospace;
+        font-size: 0.875em;
+        background: var(--color-surface);
+        padding: 0.125rem 0.375rem;
+        border-radius: 4px;
+        color: var(--color-dim);
+        border: 1px solid var(--color-edge);
+      }
+      .prose pre {
+        background: var(--color-surface) !important;
+        border: 1px solid var(--color-edge);
+        border-radius: 8px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+      }
+      .prose pre code { background: transparent !important; padding: 0; border: none; font-size: 0.875em; }
+      /* Shiki syntax highlight: dark by default, light on .light class */
+      .astro-code, .astro-code span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+      }
+      html.light .astro-code,
+      html.light .astro-code span {
+        color: var(--shiki-light) !important;
+        background-color: var(--shiki-light-bg) !important;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col font-sans">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

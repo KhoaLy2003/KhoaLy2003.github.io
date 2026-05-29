@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const { title, description, publishDate, tags } = post.data;
+const dateStr = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<BaseLayout title={title} description={description}>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Post header -->
+    <header class="mb-10">
+      <div class="flex flex-wrap gap-2 mb-5">
+        {tags.map((tag) => (
+          <span class="text-xs font-mono bg-surface text-dim px-2 py-0.5 rounded border border-edge">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-3xl font-bold text-ink mb-3">{title}</h1>
+      <time class="text-dim text-sm" datetime={publishDate.toISOString()}>{dateStr}</time>
+    </header>
+
+    <!-- Post content -->
+    <div class="prose">
+      <Content />
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-16 pt-8 border-t border-edge">
+      <a href="/blog" class="text-sm text-accent hover:underline">← All posts</a>
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  document.querySelectorAll('pre').forEach((pre) => {
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'position:relative;';
+    pre.parentNode?.insertBefore(wrapper, pre);
+    wrapper.appendChild(pre);
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy code to clipboard');
+    btn.className = 'copy-btn';
+    wrapper.appendChild(btn);
+
+    btn.addEventListener('click', async () => {
+      const code = pre.querySelector('code')?.textContent ?? '';
+      await navigator.clipboard.writeText(code);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Copy';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  });
+</script>

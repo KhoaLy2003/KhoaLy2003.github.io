@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+const { title, description, tech, github, demo } = project.data;
+---
+<article class="border border-edge rounded-lg p-5 bg-surface flex flex-col gap-4 hover:border-accent transition-colors">
+  <div>
+    <h3 class="text-ink font-semibold mb-1.5">{title}</h3>
+    <p class="text-dim text-sm leading-relaxed">{description}</p>
+  </div>
+  <div class="flex flex-wrap gap-1.5">
+    {tech.map((t) => (
+      <span class="text-xs font-mono bg-canvas text-dim px-2 py-0.5 rounded border border-edge">
+        {t}
+      </span>
+    ))}
+  </div>
+  <div class="flex gap-4 mt-auto pt-1 text-sm">
+    <a
+      href={github}
+      class="text-accent hover:underline"
+      target="_blank"
+      rel="noopener noreferrer"
+    >GitHub ↗</a>
+    {demo && (
+      <a
+        href={demo}
+        class="text-accent hover:underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Demo ↗</a>
+    )}
+  </div>
+</article>

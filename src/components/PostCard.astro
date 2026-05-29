@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { title, description, publishDate, tags } = post.data;
+const dateStr = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+<a href={`/blog/${post.slug}`} class="group block">
+  <article class="border border-edge rounded-lg p-5 bg-surface hover:border-accent transition-colors">
+    <div class="flex flex-wrap items-center gap-2 text-xs text-dim mb-2">
+      <time datetime={publishDate.toISOString()}>{dateStr}</time>
+      {tags.slice(0, 4).map((tag) => (
+        <span class="bg-canvas px-2 py-0.5 rounded font-mono border border-edge">{tag}</span>
+      ))}
+    </div>
+    <h3 class="text-ink font-semibold group-hover:text-accent transition-colors mb-1">
+      {title}
+    </h3>
+    <p class="text-dim text-sm leading-relaxed">{description}</p>
+  </article>
+</a>

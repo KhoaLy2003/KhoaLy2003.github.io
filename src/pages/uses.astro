@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Hardware & Gear',
+    items: [
+      { name: 'MSI Katana GF66', desc: 'Main machine. Handles everything from coding and running Docker stacks to gaming after hours.' },
+      { name: 'Leaven K68', desc: 'Compact 65% mechanical keyboard. Tactile switches that make long typing sessions much more comfortable.' },
+      { name: 'Logitech G Series Mouse', desc: 'Reliable gaming mouse with a precise sensor. Works just as well for all-day cursor work as it does in games.' },
+      { name: 'Xiaomi Mi 8 Lite', desc: 'Daily driver phone for communication, testing mobile layouts, and quick lookups.' },
+    ],
+  },
+  {
+    title: 'Editor & IDE',
+    items: [
+      { name: 'IntelliJ IDEA', desc: 'Primary IDE for Java and Spring Boot. The inspections and refactoring tools are unmatched.' },
+      { name: 'Visual Studio Code', desc: 'For frontend work, markdown editing, and quick file edits.' },
+    ],
+  },
+  {
+    title: 'Terminal & Version Control',
+    items: [
+      { name: 'Git', desc: 'Version control for everything. GitLab at work, GitHub for personal projects.' },
+      { name: 'Windows Terminal', desc: 'PowerShell and bash side by side.' },
+    ],
+  },
+  {
+    title: 'Tools & Software',
+    items: [
+      { name: 'Docker', desc: 'Local development and containerizing services. Keeps my machine clean.' },
+      { name: 'Postman', desc: 'API testing and manual endpoint exploration.' },
+      { name: 'DBeaver', desc: 'Database management and SQL queries across PostgreSQL and MySQL.' },
+      { name: 'Jira', desc: 'Sprint planning and task tracking at work.' },
+    ],
+  },
+  {
+    title: 'Miscellaneous',
+    items: [
+      { name: 'Notion', desc: 'Notes, study plans, and personal project tracking.' },
+    ],
+  },
+];
+---
+<BaseLayout title="Uses" description="The tools, software, and gear Khoa uses day to day.">
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold text-ink mb-2">Uses</h1>
+    <p class="text-dim mb-8">Tools and software I use day to day.</p>
+    <img src="/uses.png" alt="My setup" class="w-full rounded-xl mb-14 object-cover" />
+
+    <div class="space-y-14">
+      {sections.map(({ title, items }) => (
+        <section>
+          <h2 class="text-xs font-mono text-dim uppercase tracking-widest mb-6">{title}</h2>
+          <ul class="space-y-5">
+            {items.map(({ name, desc }) => (
+              <li>
+                <p class="text-ink font-medium mb-0.5">{name}</p>
+                <p class="text-dim text-sm">{desc}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <p class="text-dim text-sm italic mt-14">This page is a living document — I'll update it as my setup changes.</p>
+  </div>
+</BaseLayout>
