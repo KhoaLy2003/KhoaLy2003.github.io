@@ -15,26 +15,31 @@ const featuredProjects = (await getCollection('projects'))
 <BaseLayout title="Home">
   <!-- Hero -->
   <section class="max-w-4xl mx-auto px-6 pt-20 pb-16">
-    <p class="font-mono text-dim text-sm mb-3">Hi, I'm</p>
-    <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-3">Ly Ngoc Dang Khoa</h1>
-    <p class="text-xl text-dim mb-6">Backend Developer · Ho Chi Minh City</p>
-    <p class="text-ink max-w-xl leading-relaxed mb-8">
-      I build reliable backend systems with Java and Spring Boot. I also write about
-      what I'm learning and things I care about.
-    </p>
-    <div class="flex flex-wrap gap-5 text-sm">
-      <a
-        href="https://github.com/KhoaLy2003"
-        class="text-dim hover:text-accent transition-colors"
-        target="_blank" rel="noopener noreferrer"
-      >GitHub ↗</a>
-      <a
-        href="https://www.linkedin.com/in/khoaly2003"
-        class="text-dim hover:text-accent transition-colors"
-        target="_blank" rel="noopener noreferrer"
-      >LinkedIn ↗</a>
-      <a href="/blog" class="text-dim hover:text-ink transition-colors">Blog →</a>
-      <a href="/projects" class="text-dim hover:text-ink transition-colors">Projects →</a>
+    <div class="flex items-start gap-10 mb-4">
+      <img src="/avatar.jpg" alt="Khoa" class="w-36 h-36 sm:w-52 sm:h-52 rounded-full object-cover shrink-0 hidden sm:block" />
+      <div>
+        <p class="font-mono text-dim text-sm mb-3">Hi, I'm</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-3">Ly Ngoc Dang Khoa</h1>
+        <p class="text-xl text-dim mb-6">Backend Developer · Ho Chi Minh City</p>
+        <p class="text-ink max-w-xl leading-relaxed mb-8">
+          I build reliable backend systems with Java and Spring Boot. I also write about
+          what I'm learning and things I care about.
+        </p>
+        <div class="flex flex-wrap gap-5 text-sm">
+          <a
+            href="https://github.com/KhoaLy2003"
+            class="text-dim hover:text-accent transition-colors"
+            target="_blank" rel="noopener noreferrer"
+          >GitHub ↗</a>
+          <a
+            href="https://www.linkedin.com/in/khoaly2003"
+            class="text-dim hover:text-accent transition-colors"
+            target="_blank" rel="noopener noreferrer"
+          >LinkedIn ↗</a>
+          <a href="/blog" class="text-dim hover:text-ink transition-colors">Blog →</a>
+          <a href="/projects" class="text-dim hover:text-ink transition-colors">Projects →</a>
+        </div>
+      </div>
     </div>
   </section>
 
