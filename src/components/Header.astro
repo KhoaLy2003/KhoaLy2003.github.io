@@ -10,7 +10,12 @@ const { pathname } = Astro.url;
 ---
 <header class="border-b border-edge sticky top-0 bg-canvas z-10">
   <nav class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-    <a href="/" class="font-mono text-sm text-ink font-semibold hover:text-accent transition-colors">
+    <a href="/" class="font-mono text-sm text-ink font-semibold hover:text-accent transition-colors flex items-center gap-2">
+      <svg width="18" height="18" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 6 Q54 46 94 50 Q54 54 50 94 Q46 54 6 50 Q46 46 50 6 Z" fill="#58a6ff"/>
+        <path d="M80 12 Q81 21 90 22 Q81 23 80 32 Q79 23 70 22 Q79 21 80 12 Z" fill="#79c0ff"/>
+        <path d="M22 66 Q23 73 30 74 Q23 75 22 82 Q21 75 14 74 Q21 73 22 66 Z" fill="#79c0ff" opacity="0.85"/>
+      </svg>
       khoa.ly
     </a>
     <div class="flex items-center gap-6">

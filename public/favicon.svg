@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0d1117"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-    font-family="monospace" font-size="18" font-weight="700" fill="#58a6ff">K</text>
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <title>khoa.ly favicon</title>
+  <rect width="32" height="32" rx="6" fill="#0d1117"></rect>
+  <g transform="translate(6 6) scale(0.2)">
+    <path d="M50 6 Q54 46 94 50 Q54 54 50 94 Q46 54 6 50 Q46 46 50 6 Z" fill="#58a6ff"></path>
+    <path d="M80 12 Q81 21 90 22 Q81 23 80 32 Q79 23 70 22 Q79 21 80 12 Z" fill="#79c0ff"></path>
+    <path d="M22 66 Q23 73 30 74 Q23 75 22 82 Q21 75 14 74 Q21 73 22 66 Z" fill="#79c0ff" opacity="0.85"></path>
+  </g>
 </svg>

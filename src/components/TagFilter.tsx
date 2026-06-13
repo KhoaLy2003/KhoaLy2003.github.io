@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 interface Post {
   slug: string;
@@ -6,6 +6,11 @@ interface Post {
   description: string;
   publishDate: string;
   tags: string[];
+}
+
+interface Stats {
+  views: number;
+  stars: number;
 }
 
 interface Props {
@@ -23,6 +28,15 @@ function formatDate(iso: string) {
 
 export default function TagFilter({ posts, allTags }: Props) {
   const [active, setActive] = useState<string | null>(null);
+  const [statsMap, setStatsMap] = useState<Record<string, Stats>>({});
+
+  useEffect(() => {
+    const slugs = posts.map((p) => p.slug).join(',');
+    fetch(`/.netlify/functions/stats?slugs=${slugs}`)
+      .then((r) => r.json())
+      .then((data: Record<string, Stats>) => setStatsMap(data))
+      .catch(() => {});
+  }, []);
 
   const filtered = active ? posts.filter((p) => p.tags.includes(active)) : posts;
 
@@ -56,22 +70,30 @@ export default function TagFilter({ posts, allTags }: Props) {
         <p class="text-dim text-sm">No posts with this tag yet.</p>
       ) : (
         <div class="space-y-3">
-          {filtered.map((post) => (
-            <a key={post.slug} href={`/blog/${post.slug}`} class="group block">
-              <article class="border border-edge rounded-lg p-5 bg-surface hover:border-accent transition-colors">
-                <div class="flex flex-wrap items-center gap-2 text-xs text-dim mb-2">
-                  <time>{formatDate(post.publishDate)}</time>
-                  {post.tags.slice(0, 4).map((t) => (
-                    <span class="bg-canvas px-2 py-0.5 rounded font-mono border border-edge">{t}</span>
-                  ))}
-                </div>
-                <h3 class="text-ink font-semibold group-hover:text-accent transition-colors mb-1">
-                  {post.title}
-                </h3>
-                <p class="text-dim text-sm leading-relaxed">{post.description}</p>
-              </article>
-            </a>
-          ))}
+          {filtered.map((post) => {
+            const s = statsMap[post.slug];
+            return (
+              <a key={post.slug} href={`/blog/${post.slug}`} class="group block">
+                <article class="border border-edge rounded-lg p-5 bg-surface hover:border-accent transition-colors">
+                  <div class="flex flex-wrap items-center gap-2 text-xs text-dim mb-2">
+                    <time>{formatDate(post.publishDate)}</time>
+                    {post.tags.slice(0, 4).map((t) => (
+                      <span class="bg-canvas px-2 py-0.5 rounded font-mono border border-edge">{t}</span>
+                    ))}
+                    {s !== undefined && (
+                      <span class="ml-auto font-mono">
+                        ☆ {s.stars} · {s.views} views
+                      </span>
+                    )}
+                  </div>
+                  <h3 class="text-ink font-semibold group-hover:text-accent transition-colors mb-1">
+                    {post.title}
+                  </h3>
+                  <p class="text-dim text-sm leading-relaxed">{post.description}</p>
+                </article>
+              </a>
+            );
+          })}
         </div>
       )}
     </div>

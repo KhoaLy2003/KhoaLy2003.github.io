@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Callout from '../../components/blog/Callout.astro';
 import Figure from '../../components/blog/Figure.astro';
 import Icon from '../../components/blog/Icon.astro';
+import BlogStats from '../../components/BlogStats.tsx';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -34,7 +35,10 @@ const dateStr = publishDate.toLocaleDateString('en-US', {
         ))}
       </div>
       <h1 class="text-3xl font-bold text-ink mb-3">{title}</h1>
-      <time class="text-dim text-sm" datetime={publishDate.toISOString()}>{dateStr}</time>
+      <div class="flex items-center gap-4 flex-wrap">
+        <time class="text-dim text-sm" datetime={publishDate.toISOString()}>{dateStr}</time>
+        <BlogStats slug={post.slug} interactive={true} client:load />
+      </div>
     </header>
 
     <!-- Post content -->
@@ -50,6 +54,14 @@ const dateStr = publishDate.toLocaleDateString('en-US', {
 </BaseLayout>
 
 <script>
+  fetch('/.netlify/functions/view', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      slug: document.location.pathname.replace('/blog/', '').replace(/\/$/, ''),
+    }),
+  }).catch(() => {});
+
   document.querySelectorAll('pre').forEach((pre) => {
     const wrapper = document.createElement('div');
     wrapper.style.cssText = 'position:relative;';

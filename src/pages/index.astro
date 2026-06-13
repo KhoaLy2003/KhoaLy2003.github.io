@@ -18,7 +18,14 @@ const featuredProjects = (await getCollection('projects'))
     <div class="flex items-start gap-10 mb-4">
       <img src="/avatar.jpg" alt="Khoa" class="w-36 h-36 sm:w-52 sm:h-52 rounded-full object-cover shrink-0 hidden sm:block" />
       <div>
-        <p class="font-mono text-dim text-sm mb-3">Hi, I'm</p>
+        <p class="font-mono text-dim text-sm mb-3 flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M50 6 Q54 46 94 50 Q54 54 50 94 Q46 54 6 50 Q46 46 50 6 Z" fill="#58a6ff"/>
+            <path d="M80 12 Q81 21 90 22 Q81 23 80 32 Q79 23 70 22 Q79 21 80 12 Z" fill="#79c0ff"/>
+            <path d="M22 66 Q23 73 30 74 Q23 75 22 82 Q21 75 14 74 Q21 73 22 66 Z" fill="#79c0ff" opacity="0.85"/>
+          </svg>
+          Hi, I'm
+        </p>
         <h1 class="text-4xl sm:text-5xl font-bold text-ink mb-3">Ly Ngoc Dang Khoa</h1>
         <p class="text-xl text-dim mb-6">Backend Developer · Ho Chi Minh City</p>
         <p class="text-ink max-w-xl leading-relaxed mb-8">

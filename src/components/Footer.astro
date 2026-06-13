@@ -3,7 +3,14 @@ const year = new Date().getFullYear();
 ---
 <footer class="border-t border-edge mt-20 py-8">
   <div class="max-w-4xl mx-auto px-6 flex items-center justify-between text-sm text-dim">
-    <span>© {year} Ly Ngoc Dang Khoa</span>
+    <span class="flex items-center gap-2">
+      <svg width="14" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M50 6 Q54 46 94 50 Q54 54 50 94 Q46 54 6 50 Q46 46 50 6 Z" fill="currentColor"/>
+        <path d="M80 12 Q81 21 90 22 Q81 23 80 32 Q79 23 70 22 Q79 21 80 12 Z" fill="currentColor" opacity="0.7"/>
+        <path d="M22 66 Q23 73 30 74 Q23 75 22 82 Q21 75 14 74 Q21 73 22 66 Z" fill="currentColor" opacity="0.55"/>
+      </svg>
+      © {year} Ly Ngoc Dang Khoa
+    </span>
     <div class="flex gap-5">
       <a
         href="https://github.com/KhoaLy2003"
