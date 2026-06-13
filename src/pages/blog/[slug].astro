@@ -1,6 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Callout from '../../components/blog/Callout.astro';
+import Figure from '../../components/blog/Figure.astro';
+import Icon from '../../components/blog/Icon.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -36,7 +39,7 @@ const dateStr = publishDate.toLocaleDateString('en-US', {
 
     <!-- Post content -->
     <div class="prose">
-      <Content />
+      <Content components={{ Callout, Figure, Icon }} />
     </div>
 
     <!-- Back link -->

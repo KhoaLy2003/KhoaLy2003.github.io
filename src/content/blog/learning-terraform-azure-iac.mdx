@@ -1,0 +1,87 @@
+---
+title: "Infrastructure as Code Changed How I Think About Environments"
+description: "What I learned picking up Terraform and Azure for the first time — provisioning infrastructure, setting up monitoring dashboards, and the mental shift that came with it."
+publishDate: 2026-06-05
+tags: ["terraform", "azure", "devops", "career"]
+draft: false
+---
+
+<Callout type="tldr">
+  I spent a week learning Terraform and Azure from scratch. The tools were interesting. The mindset shift was more interesting.
+</Callout>
+
+A week ago I could not have told you the difference between a Terraform `resource` block and a `data` block. Now I can — and I also have opinions about it. That's the kind of week it was.
+
+This post is about what I actually picked up learning <Icon name="logos:terraform" /> Terraform and <Icon name="logos:azure-icon" /> Azure for the first time, and — more importantly — what changed in how I *think* about infrastructure because of it.
+
+---
+
+## The starting point: vague familiarity
+
+Before this week I had the surface-level understanding most backend developers have. Infrastructure-as-code? Yes, I know what that is. Terraform? Sure, it's the HashiCorp tool that provisions things. Azure? Microsoft's cloud platform, competes with AWS.
+
+Knowing *about* something and actually *using* something are different things. I knew about them. I had never used them. This week forced me to close that gap.
+
+The first hour was mostly documentation, the next few hours were walls. That's the pattern with any unfamiliar tool: you read, you try, something breaks in a way that doesn't match what you just read, you backtrack, and slowly — *slowly* — a real mental model starts forming.
+
+---
+
+## Provisioning Azure infrastructure with Terraform
+
+The first real task was provisioning Azure infrastructure using Terraform. Resource groups, storage accounts, virtual networks — the kind of foundational stuff that you have to get right before anything else can run.
+
+What surprised me was how *explicit* everything is. In Terraform, if a resource exists, you declared it. If a dependency exists between two resources, you expressed it. There's almost nowhere to hide implicit assumptions. The configuration file is a single source of truth, and it is ruthlessly literal.
+
+That felt uncomfortable at first. I'm used to environments that have accumulated history — things that exist because someone ran a command two years ago, settings that nobody quite remembers changing. Terraform has no patience for that. If it's not in the config, it doesn't belong.
+
+<Callout type="tip">
+  If you're just starting out: run `terraform plan` constantly. It's your dry-run safety net, and reading the output carefully is half the learning.
+</Callout>
+
+---
+
+## Setting up monitoring dashboards
+
+Once the infrastructure was provisioned, the next step was wiring up monitoring — dashboards that give you visibility into what's actually happening across those resources at runtime.
+
+This was where the value of having everything defined in code became concrete. Because the infrastructure was already described declaratively, plugging monitoring into it felt like extending a model rather than bolting something onto a running system. The same principle applied: define what you want observed, let the tooling handle the rest.
+
+Seeing the dashboards come up and pull real data from resources I had provisioned minutes earlier was a genuinely satisfying moment. It's the infrastructure equivalent of your unit tests going green.
+
+---
+
+## The actual big takeaway: IaC changes how you think
+
+Here's the thing nobody tells you clearly before you use infrastructure-as-code for the first time: it doesn't just change what you do, it changes what you *expect*.
+
+Before this week, I thought of environments as things that exist and are managed. You SSH in, you change something, the environment reflects the change. The environment is the ground truth.
+
+After this week, I think of environments as *outputs*. The code is the ground truth. The running infrastructure is just what happens when you apply the code to a cloud provider. That sounds subtle, but it rewires a lot of assumptions.
+
+<Callout type="note">
+  This mental shift is the real skill unlock. Terraform syntax you can look up. Thinking in declared state takes longer to internalize — but once it does, you start spotting "undeclared" infrastructure decisions in everything.
+</Callout>
+
+Drift becomes a concept that bothers you. Manual changes to a Terraform-managed environment start feeling wrong in the way that editing a compiled binary feels wrong — technically possible, practically asking for trouble.
+
+---
+
+## What I'd tell a fellow dev picking this up
+
+If you're a backend developer who has never seriously touched IaC, a few things I wish someone had said to me:
+
+**The learning curve is front-loaded.** The first few hours are disorienting. Push through them. The mental model clicks faster than you expect once you've provisioned your first few real resources.
+
+**Read the state file.** Understanding what Terraform tracks in `terraform.tfstate` will save you confusion down the road. It's not magic — it's a JSON record of what Terraform thinks the world looks like.
+
+**Monitoring is not optional.** Provisioning infrastructure without visibility is just creating invisible problems. Set up dashboards early, not as an afterthought.
+
+---
+
+I'll write a follow-up post going deeper on specific Terraform patterns once I've had more time with the stack. For now, this is where I landed after week one: more capable than when I started, with a longer list of things I want to understand properly.
+
+That's usually the sign of a good week.
+
+---
+
+*Are you using Terraform or Azure on your team? I'd love to know what patterns or pitfalls you've run into — drop a comment below.*

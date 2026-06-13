@@ -1,0 +1,58 @@
+---
+interface Props {
+  type: 'tip' | 'warning' | 'info' | 'note' | 'update' | 'tldr';
+}
+
+const { type } = Astro.props;
+
+const config = {
+  tip:     { emoji: '💡', label: 'Tip',     color: '#58a6ff' },
+  warning: { emoji: '⚠️',  label: 'Warning', color: '#d29922' },
+  info:    { emoji: 'ℹ️',  label: 'Info',    color: '#8b949e' },
+  note:    { emoji: '📝', label: 'Note',    color: '#bc8cff' },
+  update:  { emoji: '🔄', label: 'Update',  color: '#3fb950' },
+  tldr:    { emoji: '⚡', label: 'TL;DR',   color: '#f0883e' },
+};
+
+const { emoji, label, color } = config[type];
+---
+
+<div class="callout" style={`--callout-color: ${color};`}>
+  <div class="callout-header">
+    <span aria-hidden="true">{emoji}</span>
+    <strong>{label}</strong>
+  </div>
+  <div class="callout-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .callout {
+    background: var(--color-surface);
+    border-left: 3px solid var(--callout-color);
+    border-radius: 0 6px 6px 0;
+    padding: 0.75rem 1rem;
+    margin: 1.5rem 0;
+  }
+  .callout-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .callout-header strong {
+    color: var(--callout-color);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .callout-body {
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .callout-body :global(p) {
+    margin: 0;
+  }
+</style>
